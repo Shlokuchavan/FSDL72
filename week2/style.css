@@ -1,0 +1,32 @@
+p{
+    color: red;
+    font-size: 50px;
+    align-items: center;
+}
+p:hover{
+    color: black;
+    text-align: center;
+
+}
+
+.navigationbar{
+ 
+   padding: 10px;
+  
+   color: white;
+ 
+
+    display: flex;
+    list-style: none;
+}
+nav{
+    background-color: rgb(161, 248, 235);
+   overflow: hidden;
+}
+.navigationbar a{
+    color: #000000; 
+    text-decoration: none;
+    padding: 75px;
+
+    
+}

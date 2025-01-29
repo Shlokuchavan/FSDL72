@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the navigation bar */
+nav {
+    background-color: black;
+    overflow: hidden;
+}
+
+.navigationbar {
+    padding: 10px;
+    color: white;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.navigationbar li {
+    padding: 10px;
+}
+
+.navigationbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navigationbar a:hover {
+    color: #00FF00; /* Green on hover */
+}
+
+/* Table Styling */
+table.data-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table.data-table th, table.data-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+table.data-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table.data-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Paragraph Styling */
+p {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+}
+
+p:hover {
+    color: black;
+}
+</style>
+<body>
+    <nav>
+        <ul class="navigationbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h2>Table of Data</h2>
+
+    <!-- Table displaying data -->
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>28</td>
+                <td>johndoe@example.com</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>34</td>
+                <td>janesmith@example.com</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Sam Brown</td>
+                <td>22</td>
+                <td>sambrown@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>The second statement by using internal CSS</p>
+    
+</body>
+</html>
