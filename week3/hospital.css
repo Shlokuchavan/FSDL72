@@ -1,0 +1,38 @@
+body{
+    border: 500px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+
+
+.navtax{
+    background-color:#343a40;
+    height: 50px;
+}
+h1{
+    text-align: center;
+    padding-top: 10px;
+}
+#add{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.navname{
+    background-color:#343a40;
+    height: 50px;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    
+
+}
+.names-h3{
+    text-align: left;
+}
+
+#tab{
+    width: 100%;
+}
