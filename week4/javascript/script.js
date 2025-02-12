@@ -1,22 +1,13 @@
 let timer;
 let countdown;
 let timeLeft = 30;
-let score = 0;
 let gameStarted = false;
-let buttonPositions = [];
 
-function startGame(startTime) {
-    // Set the timer to the selected starting time (30 or 60 seconds)
-    timeLeft = startTime;
-    score = 0;
-    
-    // Display the score and timer
-    document.getElementById('score').innerText = score;
-    document.getElementById('timer').innerText = timeLeft;
-
-    // Hide the start buttons and show the game area
+function startGame() {
+    // Hide the start button
     document.getElementById('startBtn').style.display = 'none';
-    document.getElementById('startBtn60').style.display = 'none';
+    
+    // Show the game area and start the timer
     document.getElementById('gameArea').style.display = 'block';
     gameStarted = true;
 
@@ -44,20 +35,13 @@ function spawnButton() {
         button.innerText = 'Click Me';
         button.id = 'clickMeBtn';
 
-        // Get game area dimensions
+        // Randomly position the button within the game area
         const gameArea = document.getElementById('gameArea');
-        const maxX = gameArea.clientWidth - 100; // Button width (set to 100px max)
-        const maxY = gameArea.clientHeight - 100; // Button height (set to 50px max)
+        const maxX = gameArea.clientWidth - button.clientWidth;
+        const maxY = gameArea.clientHeight - button.clientHeight;
 
-        // Ensure the button doesn't overlap previous buttons
-        let randomX, randomY;
-        do {
-            randomX = Math.floor(Math.random() * maxX);
-            randomY = Math.floor(Math.random() * maxY);
-        } while (isOverlapping(randomX, randomY));
-
-        // Add the new position to the buttonPositions array
-        buttonPositions.push({ x: randomX, y: randomY });
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
 
         button.style.left = randomX + 'px';
         button.style.top = randomY + 'px';
@@ -67,46 +51,27 @@ function spawnButton() {
 
         // Add click event listener to the button
         button.onclick = () => {
-            // Increase score when button is clicked
-            score++;
-            document.getElementById('score').innerText = score;
-
-            // Remove the clicked button
+            // If the button is clicked, spawn a new button
             gameArea.removeChild(button);
-
-            // Spawn a new button after clicking the current one
             spawnButton();
         };
-    }
-}
 
-function isOverlapping(x, y) {
-    // Check if the new button position overlaps with any previous positions
-    for (let i = 0; i < buttonPositions.length; i++) {
-        const pos = buttonPositions[i];
-        const dist = Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2));
-        if (dist < 100) { // If the distance is too close, treat it as overlapping
-            return true;
-        }
+        // Spawn a new button every 1-3 seconds
+        setTimeout(spawnButton, Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000);
     }
-    return false;
 }
 
 function gameOver() {
-    alert('Game Over! Your score: ' + score);
+    alert('Game Over! Time is up.');
     resetGame();
 }
 
 function resetGame() {
     // Reset the game state
     timeLeft = 30;
-    score = 0;
-    buttonPositions = []; // Clear button positions
     document.getElementById('timer').innerText = timeLeft;
-    document.getElementById('score').innerText = score;
     document.getElementById('gameArea').style.display = 'none';
     document.getElementById('startBtn').style.display = 'block';
-    document.getElementById('startBtn60').style.display = 'block';
     gameStarted = false;
     clearInterval(countdown);
 }

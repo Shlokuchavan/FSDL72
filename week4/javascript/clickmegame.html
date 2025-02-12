@@ -4,22 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Me Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        #timer, #score {
+            font-weight: bold;
+        }
+
+        #clickMeBtn {
+            padding: 20px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        #clickMeBtn:hover {
+            background-color: #45a049;
+        }
+
+        #startBtn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #startBtn:hover {
+            background-color: #005f73;
+        }
+    </style>
 </head>
 <body>
 
     <h1>Click Me Game</h1>
     <p>Time Left: <span id="timer">30</span> seconds</p>
     <p>Score: <span id="score">0</span></p>
-    <p>Click the button as fast as you can!</p>
 
-    <div id="gameArea">
-        <!-- The game button will be added here dynamically -->
-    </div>
+    <button id="startBtn" onclick="startGame()">Start Game</button>
 
-    <button id="startBtn" onclick="startGame(30)">Start Game (30s)</button>
-    <button id="startBtn60" onclick="startGame(60)">Start Game (60s)</button>
+    <script>
+        let score = 0;
+        let timeLeft = 30;
+        let countdown;
 
-    <script src="script.js"></script>
+        function startGame() {
+            document.getElementById('startBtn').style.display = 'none';  // Hide start button
+            score = 0;  // Reset score
+            document.getElementById('score').textContent = score;
+            timeLeft = 30;  // Reset time
+            document.getElementById('timer').textContent = timeLeft;
+            countdown = setInterval(updateTimer, 1000);  // Start the timer
+
+            spawnButton();  // Spawn the first button
+        }
+
+        function updateTimer() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+            } else {
+                clearInterval(countdown);  // Stop the timer
+                alert('Game Over! Your score is: ' + score);
+                resetGame();  // Reset the game after showing the score
+            }
+        }
+
+        function spawnButton() {
+            const button = document.createElement('button');
+            button.textContent = 'Click Me';
+            button.id = 'clickMeBtn';
+            button.style.top = Math.random() * 400 + 'px'; // Random Y position
+            button.style.left = Math.random() * 600 + 'px'; // Random X position
+
+            button.onclick = function() {
+                score++;
+                document.getElementById('score').textContent = score;
+                document.body.removeChild(button);  // Remove the clicked button
+                spawnButton();  // Spawn a new button
+            }
+
+            document.body.appendChild(button);
+        }
+
+        function resetGame() {
+            document.getElementById('startBtn').style.display = 'block';  // Show start button again
+            document.getElementById('score').textContent = '0';  // Reset score
+            document.getElementById('timer').textContent = '30';  // Reset timer
+        }
+    </script>
 </body>
 </html>
