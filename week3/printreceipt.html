@@ -9,7 +9,7 @@
 <body>
     <nav>
         <div class="navtax">
-            <h1 style="color: rgb(255, 255, 255); text-align: center;">TAX INVOICE</h1>
+            <h1 style="color: rgb(255, 255, 255);text-align: center;">TAX INVOICE</h1>
         </div>
     </nav>
 
@@ -24,13 +24,13 @@
             <h3>Party's Name</h3>
         </div>
     </nav>
-
+    
     <div class="names">
-        <h3>Name: <input type="text" id="name"></h3>
-        <h3>Address: <textarea id="add"></textarea></h3>
-        <h3>GSTIN NO: <input type="text" id="gstin"></h3>
+        <h3>Name: <input type="text" id="nameDisplay" readonly></h3>
+        <h3>Address: <textarea id="addressDisplay" readonly></textarea></h3>
+        <h3>GSTIN NO: <input type="text" id="gstinDisplay" readonly></h3>
     </div>
-
+    
     <table border="2" id="tab">
         <thead>
             <tr>
@@ -72,23 +72,26 @@
         </thead>
     </table>
 
-    <button onclick="myfun()">Submit</button>
-
-    <script>
-        function myfun(){
-            // Getting the values from the input fields
-            var name = document.getElementById("name").value;
-            var address = document.getElementById("add").value;
-            var gstin = document.getElementById("gstin").value;
-
-            // Storing the values in Local Storage
-            localStorage.setItem('name', name);
-            localStorage.setItem('address', address);
-            localStorage.setItem('gstin', gstin);
-
-            // Redirecting to the next page (printreceipt.html)
-            window.location.href = "printreceipt.html";
-        }
-    </script>
+ 
+    
+        <script>
+            // Retrieving data from Local Storage
+            var name = localStorage.getItem('name');
+            var address = localStorage.getItem('address');
+            var gstin = localStorage.getItem('gstin');
+    
+            // Ensure the values exist before trying to set them
+            if (name !== null && address !== null && gstin !== null) {
+                // Setting the retrieved values to the respective elements
+                document.getElementById('nameDisplay').value = name;
+                document.getElementById('addressDisplay').value = address;
+                document.getElementById('gstinDisplay').value = gstin;
+            } else {
+                // If no data exists, display a message or handle accordingly
+                alert('No data found in Local Storage.');
+            }
+        </script>
+    
+    
 </body>
 </html>

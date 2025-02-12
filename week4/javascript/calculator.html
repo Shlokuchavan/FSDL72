@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Fledged Calculator</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Calculator container styling */
+        .calculator {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        /* Display screen */
+        .display {
+            width: 100%;
+            height: 50px;
+            background-color: #222;
+            color: white;
+            text-align: right;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+        }
+
+        /* Buttons container */
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        /* Button styling */
+        .button {
+            background-color: #f1f1f1;
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ddd;
+        }
+
+        .button.operator {
+            background-color: #f29c11;
+            color: white;
+        }
+
+        .button.operator:hover {
+            background-color: #e68900;
+        }
+
+        .button.equal {
+            background-color: #4CAF50;
+            color: white;
+            grid-column: span 2;
+        }
+
+        .button.clear {
+            background-color: #f44336;
+            color: white;
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body >
+
+    <div class="calculator">
+        <!-- Display screen -->
+        <div class="display" id="display">0</div>
+
+        <!-- Buttons grid -->
+        <div class="buttons">
+            <button class="button clear" onclick="clearScreen()">C</button>
+            <button class="button operator" onclick="appendCharacter('/')">/</button>
+            <button class="button operator" onclick="appendCharacter('*')">*</button>
+            <button class="button operator" onclick="appendCharacter('-')">-</button>
+
+            <button class="button" onclick="appendCharacter('7')">7</button>
+            <button class="button" onclick="appendCharacter('8')">8</button>
+            <button class="button" onclick="appendCharacter('9')">9</button>
+            <button class="button operator" onclick="appendCharacter('+')">+</button>
+
+            <button class="button" onclick="appendCharacter('4')">4</button>
+            <button class="button" onclick="appendCharacter('5')">5</button>
+            <button class="button" onclick="appendCharacter('6')">6</button>
+            <button class="button equal" onclick="calculateResult()">=</button>
+
+            <button class="button" onclick="appendCharacter('1')">1</button>
+            <button class="button" onclick="appendCharacter('2')">2</button>
+            <button class="button" onclick="appendCharacter('3')">3</button>
+            <button class="button" onclick="appendCharacter('0')">0</button>
+
+            <button class="button" onclick="appendCharacter('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        // Global variable to store the current display content
+        let currentInput = "0";
+
+        // Function to clear the screen
+        function clearScreen() {
+            currentInput = "0";
+            document.getElementById("display").textContent = currentInput;
+        }
+
+        // Function to append a character to the display
+        function appendCharacter(character) {
+            if (currentInput === "0" && character !== ".") {
+                currentInput = character;
+            } else {
+                currentInput += character;
+            }
+            document.getElementById("display").textContent = currentInput;
+        }
+
+        // Function to calculate the result of the current input string
+        function calculateResult() {
+            try {
+                currentInput = eval(currentInput).toString();
+                document.getElementById("display").textContent = currentInput;
+            } catch (error) {
+                currentInput = "Error";
+                document.getElementById("display").textContent = currentInput;
+            }
+        }
+    </script>
+
+</body>
+</html>

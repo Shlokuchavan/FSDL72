@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Me Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Click Me Game</h1>
+    <p>Time Left: <span id="timer">30</span> seconds</p>
+    <p>Score: <span id="score">0</span></p>
+    <p>Click the button as fast as you can!</p>
+
+    <div id="gameArea">
+        <!-- The game button will be added here dynamically -->
+    </div>
+
+    <button id="startBtn" onclick="startGame(30)">Start Game (30s)</button>
+    <button id="startBtn60" onclick="startGame(60)">Start Game (60s)</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
