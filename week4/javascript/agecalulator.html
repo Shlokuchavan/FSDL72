@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f8ff;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Age Calculator</h1>
+    <p>Enter your birthdate:</p>
+    
+    <input type="date" id="birthDate">
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateAge() {
+            const birthDate = document.getElementById('birthDate').value;
+            if (!birthDate) {
+                document.getElementById('result').textContent = "Please enter a valid birthdate!";
+                return;
+            }
+
+            const birthDateObj = new Date(birthDate);
+            const currentDate = new Date();
+
+            let age = currentDate.getFullYear() - birthDateObj.getFullYear();
+            const monthDifference = currentDate.getMonth() - birthDateObj.getMonth();
+
+            if (monthDifference < 0 || (monthDifference === 0 && currentDate.getDate() < birthDateObj.getDate())) {
+                age--;
+            }
+
+            document.getElementById('result').textContent = `Your age is: ${age} years old.`;
+        }
+    </script>
+
+</body>
+</html>
