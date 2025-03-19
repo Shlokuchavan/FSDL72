@@ -1,0 +1,89 @@
+/* General app styling */
+.app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  color: #4caf50;
+  margin-bottom: 30px;
+}
+
+/* Styling for the form */
+.add-item-form {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.add-item-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.add-item-form input,
+.add-item-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.add-item-form button {
+  padding: 12px 20px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-item-form button:hover {
+  background-color: #45a049;
+}
+
+/* Styling for the bakery item list */
+.bakery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bakery-item {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bakery-item h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.bakery-item p {
+  margin: 5px 0;
+}
+
+.bakery-item button {
+  padding: 10px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bakery-item button:hover {
+  background-color: #d32f2f;
+}
