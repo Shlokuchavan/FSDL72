@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register here....</title>
+   
+</head>
+
+  <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            background-color: wheat;
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        input {
+            margin: 5px 0;
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            cursor: pointer;
+            width: 220px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+    </style>
+
+
+<body>
+<form>
+Name : <input type="text" id =  "name"><br><br>
+Email : <input type="email" id =  "email"><br><br>
+Password : <input type="password" id =  "pass"><br><br>
+<input type = "submit" value="submit" onclick="validateForm()">
+
+</form>
+</body>
+<script>
+function validateForm() {
+    let email = document.getElementById("email").value;
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailPattern.test(email)) {
+        alert("Invalid email! Please enter a valid email address.");
+        return false; 
+    }
+    
+    alert("Valid email! Form submitted successfully.");
+    return true; 
+}
+</script>
+
+</html>
+
+
+
