@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Difference</title>
+</head>
+<body>
+    <h2>Calculate Days Between Two Dates</h2>
+    <input type="date" id="date1">
+    <input type="date" id="date2">
+    <button onclick="calculateDays()">Calculate</button>
+    <p id="dateResult"></p>
+
+    <script>
+        function calculateDays() {
+            let date1 = new Date(document.getElementById("date1").value);
+            let date2 = new Date(document.getElementById("date2").value);
+
+            if (isNaN(date1) || isNaN(date2)) {
+                document.getElementById("dateResult").innerText = "Please select valid dates!";
+                return;
+            }
+
+            let diffTime = Math.abs(date2 - date1);
+            let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            document.getElementById("dateResult").innerText = "Days Difference: " + diffDays;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="studentApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Records</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="StudentController">
+
+    <div class="container">
+        <h1>Student Records</h1>
+
+        <form name="studentForm" ng-submit="addOrUpdateStudent()" novalidate>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" ng-model="currentStudent.name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" ng-model="currentStudent.email" required>
+                <span class="error" ng-show="studentForm.email.$error.required && studentForm.email.$touched">Email is required.</span>
+                <span class="error" ng-show="studentForm.email.$error.email && studentForm.email.$touched">Invalid email format.</span>
+            </div>
+            <button type="submit" ng-disabled="studentForm.$invalid">{{ isEditing ? 'Update Student' : 'Add Student' }}</button>
+            <button type="button" ng-click="clearForm()">Clear Form</button>
+        </form>
+
+        <div class="search-container">
+            <input type="text" ng-model="searchQuery" placeholder="Search by name or email" />
+            <button ng-click="searchStudents()">Search</button>
+        </div>
+
+        <h2>Student List (Total: {{ students.length }})</h2>
+        <ul>
+            <li ng-repeat="student in students | filter:searchQuery | orderBy:'name'">0
+                {{ student.name }} ({{ student.email }})
+                <button ng-click="editStudent($index)">Edit</button>
+                <button ng-click="confirmRemoveStudent($index)">Remove</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        angular.module('studentApp', [])
+             .controller('StudentController', ['$scope', function($scope) {
+                $scope.students = [];
+                $scope.currentStudent = {};
+                $scope.isEditing = false;
+
+                $scope.addOrUpdateStudent = function() {
+                    // Check if the email is valid
+                    if (!$scope.currentStudent.email || !$scope.currentStudent.email.includes('@')) {
+                        alert('Please provide a valid email address.');
+                        return;
+                    }
+
+                    if ($scope.currentStudent.name) {
+                        if ($scope.isEditing) {
+                            // Update existing student
+                            const index = $scope.students.findIndex(student => student.email === $scope.currentStudent.email);
+                            if (index !== -1) {
+                                $scope.students[index] = angular.copy($scope.currentStudent);
+                                alert('Student updated successfully!');
+                            }
+                        } else {
+                            // Add new student
+                            $scope.students.push({
+                                name: $scope.currentStudent.name,
+                                email: $scope.currentStudent.email
+                            });
+                            alert('Student added successfully!');
+                        }
+                        $scope.currentStudent = {}; // Clear the form
+                        $scope.isEditing = false; // Reset editing state
+                    } else {
+                        alert('Please provide a valid name.');
+                    }
+                };
+
+                $scope.editStudent = function(index) {
+                    $scope.currentStudent = angular.copy($scope.students[index]);
+                    $scope.isEditing = true;
+                };
+
+                $scope.confirmRemoveStudent = function(index) {
+                    if (confirm('Are you sure you want to remove this student?')) {
+                        $scope.removeStudent(index);
+                    }
+                };
+
+                $scope.removeStudent = function(index) {
+                    $scope.students.splice(index, 1);
+                    alert('Student removed successfully!');
+                };
+
+                $scope.clearForm = function() {
+                    $scope.currentStudent = {};
+                    $scope.isEditing = false;
+                };
+
+                $scope.searchStudents = function() {
+                    // This function can be used to trigger any additional search logic if needed
+                    // Currently, the search is handled by the filter
+                };
+            }]);
+    </script>
+</body>
+</html>
