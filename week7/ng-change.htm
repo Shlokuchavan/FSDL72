@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="changeApp">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="ChangeController">
+
+  <h3>Live Character Count</h3>
+  <input type="text" ng-model="text" ng-change="countChars()" placeholder="Type something..." />
+  <p>Characters: {{charCount}}</p>
+
+  <script>
+    angular.module('changeApp', [])
+      .controller('ChangeController', function($scope) {
+        $scope.charCount = 0;
+        $scope.countChars = function() {
+          $scope.charCount = $scope.text.length;
+        };
+      });
+  </script>
+</body>
+</html>

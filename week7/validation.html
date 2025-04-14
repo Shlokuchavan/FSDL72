@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="studentApp">
+<head>
+  <title>Student Record</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    .error { color: red; }
+  </style>
+</head>
+<body ng-controller="StudentController">
+
+  <h2>Add Student</h2>
+  <form name="studentForm" ng-submit="addStudent()" novalidate>
+    Name: <input type="text" name="name" ng-model="student.name" required />
+    <span class="error" ng-show="studentForm.name.$touched && studentForm.name.$invalid">
+      Required!
+    </span><br>
+
+    Age: <input type="number" name="age" ng-model="student.age" required min="1" />
+    <span class="error" ng-show="studentForm.age.$touched && studentForm.age.$invalid">
+      Valid age required!
+    </span><br>
+
+    <button type="submit" ng-disabled="studentForm.$invalid">Add</button>
+  </form>
+
+  <h3>Student List</h3>
+  <ul>
+    <li ng-repeat="s in students">{{s.name}} - {{s.age}} years</li>
+  </ul>
+
+  <script>
+    angular.module('studentApp', [])
+      .controller('StudentController', function($scope) {
+        $scope.students = [];
+
+        $scope.addStudent = function() {
+          if ($scope.studentForm.$valid) {
+            $scope.students.push({
+              name: $scope.student.name,
+              age: $scope.student.age
+            });
+            $scope.student = {}; // reset form
+            $scope.studentForm.$setPristine();
+            $scope.studentForm.$setUntouched();
+          }
+        };
+      });
+  </script>
+</body>
+</html>

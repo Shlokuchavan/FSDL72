@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="calcApp">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="CalcController">
+
+  <h2>Simple Addition</h2>
+
+  <input type="number" ng-model="num1" placeholder="Number 1" />
+  +
+  <input type="number" ng-model="num2" placeholder="Number 2" />
+  =
+  <strong>{{ num1 + num2 }}</strong>
+
+  <script>
+    angular.module('calcApp', [])
+      .controller('CalcController', function($scope) {
+        $scope.num1 = 0;
+        $scope.num2 = 0;
+      });
+  </script>
+
+</body>
+</html>
