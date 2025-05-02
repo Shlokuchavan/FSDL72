@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Personal Profile</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to right, #f0f2f5, #d9e2ec);
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            max-width: 960px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        .text-center h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .text-center p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Section Headers */
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1e1e2f;
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 5px;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li::before {
+            content: "✓";
+            color: #2e86de;
+            margin-right: 10px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        /* Responsive Grid Spacing */
+        .row>div {
+            margin-bottom: 30px;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+
+    <body>
+
+        <div class="container mt-5">
+            <div class="text-center mb-4">
+                <h1>John Doe</h1>
+                <p>Web Developer | Designer | Freelancer</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Bio</h3>
+                    <p>Hello! I'm John, a passionate front-end developer with 3+ years of experience. I love creating
+                        clean, responsive UIs.</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript & React</li>
+                        <li>Bootstrap & Tailwind</li>
+                        <li>Git & GitHub</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h3>Education</h3>
+                    <p>B.Sc. in Computer Science<br>XYZ University, 2020</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Contact</h3>
+                    <p>Email: johndoe@example.com<br>Phone: +123 456 7890</p>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Responsive Blog</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+            }
+
+            header {
+                background: #333;
+                color: white;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            nav ul {
+                display: flex;
+                justify-content: center;
+                list-style: none;
+                padding: 0;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+            nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .featured {
+                background: #007BFF;
+                color: white;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .blog-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 2rem;
+            }
+
+            .post {
+                background: white;
+                padding: 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            footer {
+                text-align: center;
+                padding: 1rem;
+                background: #eee;
+                margin-top: 2rem;
+            }
+        </style>
+
+        <!-- Header -->
+        <header>
+            <h1>TechTalks Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Featured Post -->
+        <section class="featured">
+            <h2>Featured: AI Changing the World</h2>
+            <p>Explore how artificial intelligence is revolutionizing industries.</p>
+        </section>
+
+        <!-- Blog Grid -->
+        <main class="blog-grid">
+            <article class="post">
+                <h3>Web Development Trends 2025</h3>
+                <p>Discover what's coming next in the world of web development...</p>
+            </article>
+
+            <article class="post">
+                <h3>Beginner's Guide to React</h3>
+                <p>A quick start for those diving into the React ecosystem...</p>
+            </article>
+
+            <article class="post">
+                <h3>CSS Tips for Modern UIs</h3>
+                <p>Make your websites look and feel polished with these tricks...</p>
+            </article>
+
+            <!-- Add more posts as needed -->
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 TechTalks. All rights reserved.</p>
+        </footer>
+
+    </body>
+
+</html>

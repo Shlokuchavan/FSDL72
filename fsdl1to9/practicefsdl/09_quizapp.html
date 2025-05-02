@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz App</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #options {
+            margin-top: 20px;
+        }
+
+        .option {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            background: #eee;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .option:hover {
+            background-color: #dcdcdc;
+        }
+
+        #next-btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #score-container {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+
+    <body>
+        <div class="quiz-container">
+            <h1>Quiz App</h1>
+            <div id="question-container">
+                <p id="question">Loading...</p>
+                <div id="options"></div>
+                <button id="next-btn" onclick="nextQuestion()">Next</button>
+            </div>
+            <p id="score-container"></p>
+        </div>
+
+        <script>
+            const questions = [
+                {
+                    question: "What is the capital of France?",
+                    options: ["Paris", "Madrid", "Berlin", "London"],
+                    answer: "Paris"
+                },
+                {
+                    question: "Which planet is known as the Red Planet?",
+                    options: ["Venus", "Saturn", "Mars", "Jupiter"],
+                    answer: "Mars"
+                },
+                {
+                    question: "HTML stands for?",
+                    options: ["HyperText Markup Language", "Home Tool Markup Language", "Hyper Trainer Marking Language", "None of the above"],
+                    answer: "HyperText Markup Language"
+                },
+                {
+                    question: "What does CSS do?",
+                    options: ["Makes website interactive", "Styles HTML elements", "Stores data", "Handles server logic"],
+                    answer: "Styles HTML elements"
+                },
+                {
+                    question: "Which language runs in a web browser?",
+                    options: ["Java", "C", "Python", "JavaScript"],
+                    answer: "JavaScript"
+                }
+            ];
+
+            let currentQuestion = 0;
+            let score = 0;
+
+            function loadQuestion() {
+                const q = questions[currentQuestion];
+                document.getElementById("question").textContent = q.question;
+
+                const optionsContainer = document.getElementById("options");
+                optionsContainer.innerHTML = "";
+
+                q.options.forEach(option => {
+                    const btn = document.createElement("button");
+                    btn.className = "option";
+                    btn.textContent = option;
+                    btn.onclick = () => selectAnswer(option);
+                    optionsContainer.appendChild(btn);
+                });
+            }
+
+            function selectAnswer(selected) {
+                const correct = questions[currentQuestion].answer;
+                if (selected === correct) score++;
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                    showScore();
+                }
+            }
+
+            function nextQuestion() {
+                // Optional if answers are selected via buttons
+            }
+
+            function showScore() {
+                document.getElementById("question-container").style.display = "none";
+                document.getElementById("score-container").textContent = `Your Score: ${score} / ${questions.length}`;
+            }
+
+            loadQuestion();
+
+        </script>
+    </body>
+
+</html>
