@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>Password Generator</h1>
+
+        <label>
+            Length:
+            <input type="number" id="Length" min="4" max="12"><br>
+        </label>
+        <label>
+            <input type="checkbox" id="uppercase">Include Uppercase <br>
+        </label>
+
+        <label>
+            <input type="checkbox" id="symbol">Include Symbol <br>
+
+        </label>
+        <button onclick="generatepass()">Generate Password</button>
+
+        <h1 id="display">
+        </h1>
+    </body>
+
+    <script>
+        function generatepass() {
+            const length = parseInt(document.getElementById('Length').value);
+            const uppercase = document.getElementById('uppercase').checked;
+            const symbol = document.getElementById('symbol').checked;
+
+            let charset = "abcdefghijklmnopqrstuvwxyz";
+            if (uppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            if (symbol) charset += '!@#$%^&*-`~/';
+
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                const randompass = Math.floor(Math.random() * charset.length);
+                password += charset[randompass];
+            }
+            document.getElementById('display').textContent = "Generated Password is : " + password;
+
+        }
+    </script>
+
+</html>
